@@ -1,21 +1,12 @@
 ﻿#include <iostream>
 #include <vector>
+#include  <algorithm>
 
 int main()
 {
-	std::vector<int> numbers{ 4, 7, 9, 14, 12 };
-	for (auto& i : numbers) {
-		std::cout << i << " ";
-	}
+	std::vector<int> numbers{ 4, 7, 9, 14, 12, 9 };
+	std::for_each(numbers.begin(), numbers.end(), [](const auto& i) {std::cout << i << " "; });
 	std::cout << std::endl;
-	auto func = [&numbers]() {
-		for (auto& i : numbers) {
-			if (i % 2 != 0) {
-				i *= 3;
-			}
-			std::cout << i << " ";
-		}
-	};
-	func();
+	std::for_each(numbers.begin(), numbers.end(), [](const auto& i) {(i % 2 != 0) ? std::cout << i * 3 << " " : std::cout << i << " "; });
 }
 
